@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broke BTech Survival Kit 💸</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Syne+Mono&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --card: #111111;
+  --border: #222;
+  --text: #f0f0f0;
+  --sub: #666;
+  --green: #00e676;
+  --yellow: #ffd600;
+  --red: #ff3d3d;
+  --orange: #ff6d00;
+  --accent: #00e676;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+/* ── TICKER ── */
+.ticker {
+  background: var(--yellow);
+  color: #000;
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 25s linear infinite;
+}
+@keyframes ticker {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ── HEADER ── */
+header {
+  padding: 2rem 1.5rem 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.header-eyebrow {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--green);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.header-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.header-title .strike {
+  text-decoration: line-through;
+  color: var(--sub);
+  font-weight: 400;
+}
+
+.header-title .highlight {
+  color: var(--yellow);
+}
+
+.wallet-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  gap: 1rem;
+}
+
+.wallet-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--sub);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.wallet-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.wallet-amount:hover { color: var(--yellow); }
+
+.wallet-edit {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--sub);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.wallet-edit:hover { border-color: var(--yellow); color: var(--yellow); }
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+
+.tab {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  color: var(--sub);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  background: transparent;
+}
+.tab:hover { border-color: #444; color: var(--text); }
+.tab.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+/* ── PANELS ── */
+.panels { max-width: 480px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+.panel { display: none; }
+.panel.active { display: block; animation: fadeUp 0.3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── SECTION TITLE ── */
+.sec-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* ── MEAL CARDS ── */
+.meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.meal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.meal-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.meal-card:hover { border-color: #333; transform: translateX(3px); }
+.meal-card:hover::before { opacity: 1; }
+
+.meal-emoji { font-size: 1.8rem; flex-shrink: 0; }
+
+.meal-info { flex: 1; min-width: 0; }
+.meal-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.meal-where {
+  font-size: 0.78rem;
+  color: var(--sub);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meal-price {
+  font-family: 'Syne Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.meal-tag {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.55rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+.tag-steal { background: rgba(0,230,118,0.12); color: var(--green); }
+.tag-fill { background: rgba(255,214,0,0.12); color: var(--yellow); }
+.tag-warn { background: rgba(255,109,0,0.12); color: var(--orange); }
+
+/* Meal filter */
+.filter-row {
+  display: flex; gap: 0.5rem; margin-bottom: 1rem; overflow-x: auto; scrollbar-width:none;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+.filter-btn {
+  font-size: 0.72rem; padding: 0.3rem 0.75rem;
+  border-radius: 20px; border: 1px solid var(--border);
+  color: var(--sub); cursor: pointer; background: transparent;
+  font-family: 'Outfit', sans-serif;
+  white-space: nowrap; transition: all 0.2s;
+}
+.filter-btn.on { background: var(--green); color: #000; border-color: var(--green); font-weight: 600; }
+
+/* ── CALCULATOR ── */
+.calc-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.calc-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 0.5rem;
+}
+
+.calc-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+.calc-input-wrap:focus-within { border-color: var(--yellow); }
+
+.calc-symbol {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  color: var(--sub);
+}
+
+.calc-input {
+  background: transparent; border: none; outline: none;
+  color: var(--text); font-family: 'Syne', sans-serif;
+  font-size: 1.3rem; font-weight: 600; width: 100%;
+}
+.calc-input::placeholder { color: #333; }
+
+.days-row {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;
+}
+.day-btn {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.65rem; padding: 0.35rem 0.7rem;
+  border-radius: 8px; border: 1px solid var(--border);
+  color: var(--sub); cursor: pointer; background: transparent;
+  transition: all 0.2s;
+}
+.day-btn.sel { background: var(--yellow); color: #000; border-color: var(--yellow); font-weight: 700; }
+
+.btn-check {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--yellow);
+  color: #000;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+  letter-spacing: 0.03em;
+}
+.btn-check:hover { transform: scale(1.02); }
+.btn-check:active { transform: scale(0.98); }
+
+.verdict-box {
+  margin-top: 1rem;
+  border-radius: 12px;
+  padding: 1.2rem;
+  display: none;
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
+
+.verdict-box.yes { background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3); }
+.verdict-box.no  { background: rgba(255,61,61,0.1); border: 1px solid rgba(255,61,61,0.3); }
+.verdict-box.meh { background: rgba(255,214,0,0.1); border: 1px solid rgba(255,214,0,0.3); }
+
+.verdict-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.verdict-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.verdict-msg { font-size: 0.9rem; color: var(--sub); line-height: 1.5; }
+.verdict-stream { min-height: 1.5rem; }
+
+/* ── ROAST ── */
+.budget-form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.expense-row {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.exp-label-input {
+  flex: 1;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.exp-label-input:focus { border-color: #444; }
+
+.exp-amt-input {
+  width: 90px;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  color: var(--yellow);
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  text-align: right;
+}
+.exp-amt-input:focus { border-color: var(--yellow); }
+
+.btn-del {
+  width: 30px; height: 30px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--sub);
+  cursor: pointer;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.btn-del:hover { border-color: var(--red); color: var(--red); }
+
+.btn-add-exp {
+  width: 100%;
+  padding: 0.6rem;
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--sub);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
+}
+.btn-add-exp:hover { border-color: #444; color: var(--text); }
+
+.btn-roast {
+  width: 100%;
+  padding: 0.9rem;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  letter-spacing: 0.03em;
+}
+.btn-roast:hover { transform: scale(1.02); }
+
+.roast-result {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: none;
+  animation: fadeUp 0.4s ease;
+}
+
+.roast-score-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
+}
+
+.roast-score {
+  font-family: 'Syne', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 0.2rem;
+}
+
+.roast-text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #ccc;
+  white-space: pre-wrap;
+}
+
+.budget-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.summary-box {
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+  text-align: center;
+}
+.summary-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.summary-key {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sub);
+}
+
+/* ── WALLET EDIT MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0,0,0,0.85);
+  display: none; align-items: center; justify-content: center;
+  backdrop-filter: blur(6px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 90%; max-width: 340px;
+  animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.modal h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.modal p { font-size: 0.85rem; color: var(--sub); margin-bottom: 1.2rem; }
+.modal-input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  color: var(--green);
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  outline: none;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+.modal-input:focus { border-color: var(--green); }
+.modal-btns { display: flex; gap: 0.6rem; }
+.btn-modal-save {
+  flex: 1; padding: 0.75rem;
+  background: var(--green); color: #000;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  border: none; border-radius: 10px; cursor: pointer;
+  transition: transform 0.15s;
+}
+.btn-modal-save:hover { transform: scale(1.02); }
+.btn-modal-cancel {
+  padding: 0.75rem 1.2rem;
+  background: transparent; color: var(--sub);
+  font-family: 'Syne', sans-serif;
+  border: 1px solid var(--border); border-radius: 10px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-modal-cancel:hover { border-color: #444; color: var(--text); }
+
+/* ── BOTTOM NAV ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  max-width: 480px;
+  margin: 0 auto;
+  left: 50%; transform: translateX(-50%);
+  width: 100%;
+}
+.nav-btn {
+  flex: 1; padding: 0.9rem 0.5rem 1rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
+  cursor: pointer; border: none; background: transparent;
+  transition: all 0.2s;
+}
+.nav-icon { font-size: 1.3rem; transition: transform 0.2s; }
+.nav-label {
+  font-family: 'Syne Mono', monospace;
+  font-size: 0.5rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--sub);
+  transition: color 0.2s;
+}
+.nav-btn.active .nav-icon { transform: scale(1.15); }
+.nav-btn.active .nav-label { color: var(--green); }
+
+/* thinking dots */
+.thinking { display:none; align-items:center; gap:4px; padding: 0.5rem 0; }
+.thinking.show { display:flex; }
+.tdot { width:5px;height:5px;border-radius:50%;background:var(--yellow);animation:tdot 1s ease infinite; }
+.tdot:nth-child(2){animation-delay:.15s}
+.tdot:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,100%{opacity:.3;transform:scale(.6)}50%{opacity:1;transform:scale(1)}}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-inner">💸 WALLET GOING BRRR... DOWN &nbsp;&nbsp;&nbsp; 🍜 MAGGI: THE ONLY CONSTANT &nbsp;&nbsp;&nbsp; 📚 TEXTBOOKS: ₹800. PHOTOCOPIES: ₹40. RESPECT THE HUSTLE &nbsp;&nbsp;&nbsp; ☕ 4TH CHAI OF THE DAY &nbsp;&nbsp;&nbsp; 🎓 BTECH YEAR 2: SURVIVING ON VIBES AND DHABA FOOD &nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <p class="header-eyebrow">🎓 BTech Survival Kit v1.0</p>
+  <h1 class="header-title">
+    <span class="strike">Rich</span> <span class="highlight">Broke</span><br>Student Guide
+  </h1>
+
+  <div class="wallet-bar">
+    <div>
+      <div class="wallet-label">Today's Budget</div>
+      <div class="wallet-amount" id="wallet-display" onclick="openModal()">₹<span id="wallet-num">200</span></div>
+    </div>
+    <div style="text-align:right">
+      <div class="wallet-label">Remaining</div>
+      <div class="wallet-amount" style="font-size:1.3rem" id="remaining-display">₹<span id="remaining-num">200</span></div>
+    </div>
+    <button class="wallet-edit" onclick="openModal()">✏ Edit</button>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('meals', this)">🍜 Meals</button>
+  <button class="tab" onclick="switchTab('calc', this)">🧮 Can I afford?</button>
+  <button class="tab" onclick="switchTab('roast', this)">🔥 Roast me</button>
+</div>
+
+<!-- PANELS -->
+<div class="panels">
+
+  <!-- MEALS -->
+  <div class="panel active" id="panel-meals">
+    <p class="sec-title">Filter by vibe</p>
+    <div class="filter-row">
+      <button class="filter-btn on" onclick="filterMeals('all', this)">All</button>
+      <button class="filter-btn" onclick="filterMeals('under30', this)">Under ₹30</button>
+      <button class="filter-btn" onclick="filterMeals('under50', this)">Under ₹50</button>
+      <button class="filter-btn" onclick="filterMeals('filling', this)">Filling</button>
+      <button class="filter-btn" onclick="filterMeals('quick', this)">Quick</button>
+    </div>
+
+    <p class="sec-title">Survival meals 🍽️</p>
+    <div class="meal-grid" id="meal-grid"></div>
+  </div>
+
+  <!-- CALCULATOR -->
+  <div class="panel" id="panel-calc">
+    <div class="calc-card" style="margin-top:0.5rem">
+      <div class="calc-label">Item / thing I want to buy</div>
+      <div class="calc-input-wrap">
+        <span class="calc-symbol">₹</span>
+        <input class="calc-input" id="item-cost" type="number" placeholder="0" min="0">
+      </div>
+
+      <div class="calc-label">How many days until allowance?</div>
+      <div class="days-row">
+        <button class="day-btn" onclick="selDay(this,1)">1d</button>
+        <button class="day-btn" onclick="selDay(this,3)">3d</button>
+        <button class="day-btn sel" onclick="selDay(this,7)">7d</button>
+        <button class="day-btn" onclick="selDay(this,15)">15d</button>
+        <button class="day-btn" onclick="selDay(this,30)">30d</button>
+      </div>
+
+      <div class="calc-label">Daily food budget I need</div>
+      <div class="calc-input-wrap">
+        <span class="calc-symbol">₹</span>
+        <input class="calc-input" id="daily-food" type="number" placeholder="80" value="80" min="0">
+      </div>
+
+      <div class="thinking" id="calc-thinking">
+        <div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>
+        <span style="font-family:'Syne Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--sub);margin-left:4px">Crunching numbers...</span>
+      </div>
+
+      <button class="btn-check" onclick="checkAfford()">⚡ Can I Afford This?</button>
+
+      <div class="verdict-box" id="verdict-box">
+        <div class="verdict-icon" id="verdict-icon"></div>
+        <div class="verdict-title" id="verdict-title"></div>
+        <div class="verdict-msg verdict-stream" id="verdict-msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROAST -->
+  <div class="panel" id="panel-roast">
+    <div class="budget-form" style="margin-top:0.5rem">
+      <div class="calc-label" style="margin-bottom:0.75rem">Today I spent on...</div>
+      <div class="expense-list" id="expense-list">
+        <div class="expense-row">
+          <input class="exp-label-input" placeholder="e.g. Chai" value="Chai">
+          <input class="exp-amt-input" type="number" placeholder="0" value="10">
+          <button class="btn-del" onclick="delExpense(this)">×</button>
+        </div>
+        <div class="expense-row">
+          <input class="exp-label-input" placeholder="e.g. Lunch" value="Dhaba lunch">
+          <input class="exp-amt-input" type="number" placeholder="0" value="60">
+          <button class="btn-del" onclick="delExpense(this)">×</button>
+        </div>
+        <div class="expense-row">
+          <input class="exp-label-input" placeholder="e.g. Maggi" value="Maggi">
+          <input class="exp-amt-input" type="number" placeholder="0" value="20">
+          <button class="btn-del" onclick="delExpense(this)">×</button>
+        </div>
+      </div>
+      <button class="btn-add-exp" onclick="addExpense()">+ Add expense</button>
+      <button class="btn-roast" onclick="roastMe()">🔥 Roast My Spending</button>
+    </div>
+
+    <div class="roast-result" id="roast-result">
+      <div class="roast-score-row">
+        <div>
+          <div class="score-label">Broke-O-Meter</div>
+          <div class="roast-score" id="roast-score">--</div>
+        </div>
+        <div class="budget-summary" style="flex:1;margin:0">
+          <div class="summary-box">
+            <div class="summary-val" id="sum-spent" style="color:var(--red)">₹0</div>
+            <div class="summary-key">Spent</div>
+          </div>
+          <div class="summary-box">
+            <div class="summary-val" id="sum-budget" style="color:var(--yellow)">₹0</div>
+            <div class="summary-key">Budget</div>
+          </div>
+          <div class="summary-box">
+            <div class="summary-val" id="sum-left" style="color:var(--green)">₹0</div>
+            <div class="summary-key">Left</div>
+          </div>
+        </div>
+      </div>
+      <div class="thinking" id="roast-thinking">
+        <div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>
+        <span style="font-family:'Syne Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--sub);margin-left:4px">Roasting in progress...</span>
+      </div>
+      <div class="roast-text" id="roast-text"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- WALLET MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>Set Today's Budget 💰</h3>
+    <p>How much do you have for today, beta?</p>
+    <input class="modal-input" id="modal-input" type="number" placeholder="200" value="200">
+    <div class="modal-btns">
+      <button class="btn-modal-save" onclick="saveBudget()">Save</button>
+      <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────
+const MEALS = [
+  { emoji:'🍜', name:'Maggi', where:'Hostel room / canteen', price:20, tags:['under30','quick'], badge:'steal' },
+  { emoji:'🥚', name:'Egg Bhurji + Bread', where:'Campus canteen', price:25, tags:['under30','filling'], badge:'steal' },
+  { emoji:'🍛', name:'Dal Chawal (thali)', where:'Dhaba outside college', price:40, tags:['under50','filling'], badge:'fill' },
+  { emoji:'☕', name:'Bread + Chai', where:'Canteen breakfast', price:15, tags:['under30','quick'], badge:'steal' },
+  { emoji:'🫓', name:'Vada Pav x2', where:'Outside gate', price:20, tags:['under30','quick','filling'], badge:'steal' },
+  { emoji:'🍱', name:'Mess food (full plate)', where:'College mess', price:35, tags:['under50','filling'], badge:'fill' },
+  { emoji:'🍝', name:'Noodles from stall', where:'College canteen', price:30, tags:['under50','quick'], badge:'fill' },
+  { emoji:'🥗', name:'Poha / Upma', where:'Morning canteen', price:20, tags:['under30','quick'], badge:'steal' },
+  { emoji:'🌯', name:'Frankie / Wrap', where:'Canteen stall', price:40, tags:['under50','filling'], badge:'fill' },
+  { emoji:'🍞', name:'Peanut butter bread', where:'Self made (dorm)', price:15, tags:['under30','quick'], badge:'steal' },
+  { emoji:'🥘', name:'Rajma Chawal', where:'Dhaba special', price:50, tags:['under50','filling'], badge:'fill' },
+  { emoji:'🍕', name:'Samosa x3', where:'Canteen', price:18, tags:['under30','quick'], badge:'steal' },
+  { emoji:'🫙', name:'Curd Rice', where:'Mess / tiffin', price:25, tags:['under30','filling'], badge:'fill' },
+  { emoji:'🧆', name:'Chhole Kulche', where:'Outside dhaba', price:45, tags:['under50','filling'], badge:'warn' },
+  { emoji:'🍫', name:'Parle-G + chai (dinner)', where:'When truly broke', price:10, tags:['under30','quick'], badge:'warn' },
+];
+
+let currentFilter = 'all';
+let budget = 200;
+let daysToAllowance = 7;
+
+// ── INIT ──────────────────────────────────────────────────
+renderMeals();
+
+function renderMeals() {
+  const grid = document.getElementById('meal-grid');
+  const filtered = currentFilter === 'all' ? MEALS : MEALS.filter(m => m.tags.includes(currentFilter));
+  const badgeLabel = { steal:'🔥 Steal', fill:'✓ Good', warn:'⚠ Stretch' };
+  const badgeCls   = { steal:'tag-steal', fill:'tag-fill', warn:'tag-warn' };
+  grid.innerHTML = filtered.map(m => `
+    <div class="meal-card">
+      <div class="meal-emoji">${m.emoji}</div>
+      <div class="meal-info">
+        <div class="meal-name">${m.name}</div>
+        <div class="meal-where">${m.where}</div>
+      </div>
+      <span class="meal-tag ${badgeCls[m.badge]}">${badgeLabel[m.badge]}</span>
+      <div class="meal-price">₹${m.price}</div>
+    </div>
+  `).join('');
+}
+
+function filterMeals(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderMeals();
+}
+
+// ── TABS ──────────────────────────────────────────────────
+function switchTab(panel, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + panel).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── WALLET ────────────────────────────────────────────────
+function openModal() {
+  document.getElementById('modal-input').value = budget;
+  document.getElementById('modal').classList.add('open');
+  setTimeout(() => document.getElementById('modal-input').focus(), 100);
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function saveBudget() {
+  const v = parseInt(document.getElementById('modal-input').value) || 200;
+  budget = v;
+  document.getElementById('wallet-num').textContent = v;
+  document.getElementById('remaining-num').textContent = v;
+  closeModal();
+}
+
+// ── CALCULATOR ───────────────────────────────────────────
+function selDay(btn, d) {
+  daysToAllowance = d;
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+
+async function checkAfford() {
+  const cost = parseFloat(document.getElementById('item-cost').value) || 0;
+  const dailyFood = parseFloat(document.getElementById('daily-food').value) || 80;
+  if (cost <= 0) { document.getElementById('item-cost').focus(); return; }
+
+  const totalNeeded = dailyFood * daysToAllowance;
+  const leftAfter = budget - cost;
+  const canSurvive = leftAfter >= totalNeeded;
+  const percentGone = Math.round((cost / budget) * 100);
+
+  const vbox = document.getElementById('verdict-box');
+  vbox.className = 'verdict-box';
+  vbox.style.display = 'none';
+
+  document.getElementById('calc-thinking').classList.add('show');
+
+  let verdict, icon, cls;
+  if (cost > budget) { verdict = 'no'; icon = '💀'; cls = 'no'; }
+  else if (canSurvive) { verdict = 'yes'; icon = '✅'; cls = 'yes'; }
+  else { verdict = 'meh'; icon = '😬'; cls = 'meh'; }
+
+  try {
+    const prompt = `You are a brutally funny but caring broke BTech student's financial advisor in India. 
+A student has ₹${budget} budget for ${daysToAllowance} days until next allowance. 
+They need ₹${dailyFood}/day for food (₹${totalNeeded} total).
+They want to spend ₹${cost} on something (that's ${percentGone}% of their budget).
+After spending: ₹${leftAfter} left. Can they survive on food? ${canSurvive ? 'YES' : 'NO'}.
+
+Give a 2-3 sentence verdict. Be funny, use Indian student references (chai, maggi, dhaba, canteen, mess food, semester exams). Be honest. Use one relevant emoji.`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 150,
+        stream: true,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const msgEl = document.getElementById('verdict-msg');
+    msgEl.textContent = '';
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '', firstChunk = true;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6).trim();
+        if (d === '[DONE]') continue;
+        try {
+          const j = JSON.parse(d);
+          const t = j.delta?.text || '';
+          if (t) {
+            if (firstChunk) {
+              document.getElementById('calc-thinking').classList.remove('show');
+              vbox.className = `verdict-box ${cls}`;
+              vbox.style.display = 'block';
+              document.getElementById('verdict-icon').textContent = icon;
+              document.getElementById('verdict-title').textContent = verdict === 'yes' ? 'You can afford it!' : verdict === 'no' ? 'Absolutely not 💀' : 'Technically... maybe?';
+              firstChunk = false;
+            }
+            msgEl.textContent += t;
+          }
+        } catch {}
+      }
+    }
+  } catch {
+    document.getElementById('calc-thinking').classList.remove('show');
+    vbox.className = `verdict-box ${cls}`;
+    vbox.style.display = 'block';
+    document.getElementById('verdict-icon').textContent = icon;
+    document.getElementById('verdict-title').textContent = verdict === 'yes' ? 'You can afford it!' : verdict === 'no' ? 'Absolutely not 💀' : 'Risky business...';
+    document.getElementById('verdict-msg').textContent = canSurvive
+      ? `You'll have ₹${leftAfter} left — enough for ${Math.floor(leftAfter/dailyFood)} days of food. You're good.`
+      : `You'll only have ₹${leftAfter} left for ${daysToAllowance} days. That's ₹${Math.round(leftAfter/daysToAllowance)}/day. Maggi mode activated.`;
+  }
+}
+
+// ── ROAST ─────────────────────────────────────────────────
+function addExpense() {
+  const list = document.getElementById('expense-list');
+  const row = document.createElement('div');
+  row.className = 'expense-row';
+  row.innerHTML = `
+    <input class="exp-label-input" placeholder="e.g. Chai">
+    <input class="exp-amt-input" type="number" placeholder="0">
+    <button class="btn-del" onclick="delExpense(this)">×</button>`;
+  list.appendChild(row);
+  row.querySelector('.exp-label-input').focus();
+}
+
+function delExpense(btn) {
+  const rows = document.querySelectorAll('.expense-row');
+  if (rows.length > 1) btn.closest('.expense-row').remove();
+}
+
+async function roastMe() {
+  const rows = document.querySelectorAll('.expense-row');
+  const expenses = [];
+  let total = 0;
+  rows.forEach(r => {
+    const label = r.querySelector('.exp-label-input').value.trim() || 'Unknown';
+    const amt = parseFloat(r.querySelector('.exp-amt-input').value) || 0;
+    if (amt > 0) { expenses.push({ label, amt }); total += amt; }
+  });
+
+  if (!expenses.length) return;
+
+  const left = budget - total;
+  const pct = Math.round((total / budget) * 100);
+  const score = Math.min(100, Math.round((total / budget) * 100));
+
+  const result = document.getElementById('roast-result');
+  result.style.display = 'block';
+  document.getElementById('sum-spent').textContent = '₹' + total;
+  document.getElementById('sum-budget').textContent = '₹' + budget;
+  document.getElementById('sum-left').textContent = '₹' + Math.max(0, left);
+  document.getElementById('sum-left').style.color = left < 0 ? 'var(--red)' : left < 50 ? 'var(--yellow)' : 'var(--green)';
+
+  const scoreEmoji = score >= 90 ? '💀' : score >= 70 ? '🔥' : score >= 50 ? '😬' : '😌';
+  document.getElementById('roast-score').textContent = scoreEmoji;
+
+  document.getElementById('roast-thinking').classList.add('show');
+  document.getElementById('roast-text').textContent = '';
+
+  const expStr = expenses.map(e => `${e.label}: ₹${e.amt}`).join(', ');
+
+  const prompt = `You are a savage but loving broke BTech student's financial roaster in India. 
+Student's daily budget: ₹${budget}
+Today's spending: ${expStr}
+Total spent: ₹${total} (${pct}% of budget)
+Remaining: ₹${left}
+
+Write a 3-4 sentence roast of their spending habits. Be brutally funny and specific about what they spent on. Use Indian college references — chai addiction, canteen food, maggi, hostel life, semester exams, jugaad. 
+End with ONE actual money-saving tip that's realistic for a broke BTech student.
+Use emojis. Be mean but with love. Don't hold back.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 300,
+        stream: true,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    const textEl = document.getElementById('roast-text');
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '', firstChunk = true;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const d = line.slice(6).trim();
+        if (d === '[DONE]') continue;
+        try {
+          const j = JSON.parse(d);
+          const t = j.delta?.text || '';
+          if (t) {
+            if (firstChunk) {
+              document.getElementById('roast-thinking').classList.remove('show');
+              firstChunk = false;
+            }
+            textEl.textContent += t;
+          }
+        } catch {}
+      }
+    }
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } catch {
+    document.getElementById('roast-thinking').classList.remove('show');
+    document.getElementById('roast-text').textContent = left < 0
+      ? `Bhai, tu ₹${Math.abs(left)} over budget gaya 😭 Maggi bhi afford nahi hogi ab. Parle-G aur paani pe survive kar aaj. 💀`
+      : `₹${total} kharch kiya ₹${budget} mein se. ${pct}% gone. ${left < 50 ? 'Baki ka din paani pe kaat.' : 'Theek hai, survive kar lega.'}`;
+  }
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
